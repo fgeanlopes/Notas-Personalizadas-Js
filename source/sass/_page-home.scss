@@ -1,0 +1,142 @@
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $cor-primaria;
+  padding: 10px;
+  -webkit-box-shadow: 0px 18px 25px -15px rgba(0,0,0,0.56);
+  -moz-box-shadow: 0px 18px 25px -15px rgba(0,0,0,0.56);
+  box-shadow: 0px 18px 25px -15px rgba(0,0,0,0.56);
+
+  .header-title {
+    color: white;
+  }
+
+  .header-menu {
+    ul {
+      display: flex;
+      li {
+        list-style: none;
+        margin: 0 15px;
+        padding: 5px 15px;
+        background-color: white;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        border: 2px solid ;
+      }
+    }
+  }
+}
+
+.newCard{
+  background-color: white;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+  border-bottom: 2px solid $cor-primaria;
+
+  .newCard-content{
+    width: 40%;
+    transition: all .4s linear;
+    border: 3px dashed $cor-primaria;
+    margin: 0 auto;
+    height: 6em;
+    padding: 15px;
+    &:focus{
+      width: 45%;
+      height: 7em;
+    }
+  }
+
+  .newCard-action{
+    margin-top: 20px;
+    padding: 10px 50px;
+    background-color: $cor-primaria;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.warp-card-options{
+  position: absolute;
+  top: -16px;
+  left: 0;
+  opacity: 0;
+  transition: opacity .3s linear;
+}
+
+.card{
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 16px;
+  position: relative;
+  margin: 5px;
+
+  &:hover{
+    .warp-card-options{
+      opacity: 1;
+    }
+  }
+}
+
+.card-options{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  text-indent: 999px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid $efeito-click;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+  background-color: #fff;
+  margin: 1px;
+  cursor: pointer;
+
+  &.isActive{
+    border: 3px solid $efeito-click;
+  }
+}
+
+.card_delete{
+  background-image: url(../img/delete.svg);
+  margin-right: 4px;
+}
+
+.card_edit{
+  background-image: url(../img/edit.svg);
+  margin-right: 21px;
+}
+
+.card-content[contenteditable="true"]{
+  outline: 2px dashed $efeito-click;
+}
+
+[data-color="first"]{
+  background-color: #45aaee;
+}
+
+[data-color="Second"]{
+  background-color: #ff1010;
+}
+[data-color="Third"]{
+  background-color: #49ef40;
+}
+[data-color="Fourth"]{
+  background-color: #ebef40;
+}
+
+@media (max-width: 992px) {
+  .newCard-content{
+    width: 90% !important;
+  }
+}
