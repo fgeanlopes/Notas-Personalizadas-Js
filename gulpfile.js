@@ -12,10 +12,21 @@ var reset_heroi = require('browser-sync').create();
 gulp.task('thor', function () {
     return gulp.src('./source/sass/*.scss')
         .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(autoprefixer({browsers:['last 4 version'], cascade:false}))
-        .on('error', notify.onError({
-            title: 'Erro no Scss, presta atenção!',
-            message: '<%= error.message %>'
+        .pipe(autoprefixer({
+            "overrideBrowserslist": [
+                "> 1%",
+                "ie >= 8",
+                "edge >= 15",
+                "ie_mob >= 10",
+                "ff >= 45",
+                "chrome >= 45",
+                "safari >= 7",
+                "opera >= 23",
+                "ios >= 7",
+                "android >= 4",
+                "bb >= 10"
+              ], cascade:false
+        
         }))
         .pipe(gulp.dest('./dist/css'))
         .pipe(reset_heroi.stream());
@@ -37,7 +48,7 @@ gulp.task('mulher-elastico', function () {
 
 // Minifica o HTML da pasta source(desenvolvimento) para a pasta raíz do projeto
 gulp.task('stan-lee', function () {
-    return gulp.src('./source/php/*.php')
+    return gulp.src('./source/php/*')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./'));
 });
@@ -54,24 +65,7 @@ gulp.task('reset_heroi', function () {
     reset_heroi.init({
 
         // INFORME O LOCAL DA PASTA DO PROJETO
-        proxy:   "localhost/sites/keep-fake",
-
-        // 1 - Para testar em mobile adicione o nome do
-        // projeto trabalhado no momento, ADICIONE O NOME
-        // EM "" NA TAG TUNNEL
-
-        //2 - DESCOMENTE A TAG "TUNNEL LOGO  ABAIXO"
-
-        // tunnel:  "projeto-teste-dev",
-
-        //Preferencia de abertura de link
-
-        // ABRIR NO LOCALHOST
-        // open: "local"
-
-        // ABRIR UM LINK NA REDE INTRANET DA EMPRESA,
-        // DISPONIVEL PARA APARELHOS NA REDE
-        // open: "tunnel
+        proxy:   "localhost/sites/notas-gean",
         open:    "local",
     })
 });
